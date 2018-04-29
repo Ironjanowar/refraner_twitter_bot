@@ -25,6 +25,11 @@ defmodule RefranerTwitterBot.Utils do
     pretty_refran_info(rest, string)
   end
 
+  defp pretty_refran_info([{"refran", refran} | rest], string) do
+    formatted_key = format_key("refran")
+    pretty_refran_info(rest, "#{formatted_key}: #{refran}\n\n" <> string)
+  end
+
   defp pretty_refran_info([{key, info} | rest], string) do
     formatted_key = format_key(key)
     pretty_refran_info(rest, string <> "#{formatted_key}: #{info}\n")

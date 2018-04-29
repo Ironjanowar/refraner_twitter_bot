@@ -15,7 +15,8 @@ defmodule RefranerTwitterBot.MixProject do
   def application do
     [
       applications: [:extwitter],
-      extra_applications: [:logger]
+      extra_applications: [:logger],
+      mod: {RefranerTwitterBot.Application, []}
     ]
   end
 
