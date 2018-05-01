@@ -19,10 +19,12 @@ defmodule RefranerTwitterBot.Scheduler do
   def handle_info(:timeout, state) do
     Logger.info("Sending scheduled tweet")
 
-    case RefranerTwitterBot.tweet() do
-      {:error, :econnrefused} -> Logger.info("Can not connect to Refraner Server")
-      _ -> Logger.info("Tweet sent")
-    end
+    spawn(fn ->
+      case RefranerTwitterBot.tweet() do
+        {:error, :econnrefused} -> Logger.info("Can not connect to Refraner Server")
+        _ -> Logger.info("Tweet sent")
+      end
+    end)
 
     {:noreply, state, @schedule_time}
   end

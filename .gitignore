@@ -22,3 +22,5 @@ erl_crash.dump
 # Ignore package tarball (built via "mix hex.build").
 refraner_twitter_bot-*.tar
 
+# Ignore token file
+*.token
